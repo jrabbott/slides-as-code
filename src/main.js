@@ -1,8 +1,8 @@
 import Reveal from 'reveal.js';
-import Notes from 'reveal.js/plugin/notes/notes.esm.js';
+import Notes from 'reveal.js/plugin/notes';
 
-import 'reveal.js/dist/reveal.css';
-import 'reveal.js/dist/theme/white.css';
+import 'reveal.js/reveal.css';
+import 'reveal.js/theme/white.css';
 import '@fontsource/dm-sans/400.css';
 import '@fontsource/dm-sans/400-italic.css';
 import '@fontsource/dm-sans/500.css';
