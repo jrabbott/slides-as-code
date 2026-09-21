@@ -42,6 +42,16 @@
   padding: 0;
   height: 100%;
   overflow: hidden;
+}
+
+/* One solid paper colour for content slides */
+.slide-title,
+.slide-list,
+.slide-modes,
+.slide-gallery,
+.slide-diagram,
+.slide-split,
+.slide-code {
   background: var(--surface) !important;
 }
 
