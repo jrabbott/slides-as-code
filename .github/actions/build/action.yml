@@ -5,6 +5,10 @@ inputs:
     description: Node.js version
     required: false
     default: "22"
+  base-path:
+    description: Vite base path for project Pages (e.g. /my-talk/). Defaults to /<repository-name>/.
+    required: false
+    default: ""
 runs:
   using: composite
   steps:
@@ -21,13 +25,32 @@ runs:
       run: npm run audit
       shell: bash
 
+    - name: Resolve Vite base path
+      id: base
+      run: |
+        if [ -n "${{ inputs.base-path }}" ]; then
+          BASE="${{ inputs.base-path }}"
+        else
+          BASE="/${{ github.event.repository.name }}/"
+        fi
+        case "$BASE" in
+          */) ;;
+          *) BASE="${BASE}/" ;;
+        esac
+        echo "path=$BASE" >> "$GITHUB_OUTPUT"
+        echo "Using Vite base: $BASE"
+      shell: bash
+
     - name: Build
       run: npm run build
       shell: bash
+      env:
+        BASE_PATH: ${{ steps.base.outputs.path }}
 
     - name: Smoke check dist
       run: |
         test -f dist/index.html
         grep -q 'assets/' dist/index.html
         ls dist/assets/*.js dist/assets/*.css >/dev/null
+        grep -q 'hljs\|highlight\|monokai' dist/assets/*.css
       shell: bash
