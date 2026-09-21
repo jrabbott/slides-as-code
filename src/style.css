@@ -1,12 +1,13 @@
 :root {
   /* One solid paper surface for content slides; teal accent kept */
   --ink: #121820;
-  --muted: #3d4654;
+  --muted: #2c3544;
   --surface: #f2eee6;
   --accent: #0c6b52;
   --accent-soft: #c5e4d8;
   --on-accent: #f2eee6;
   --closing: #121820;
+  --code-surface: #faf8f4;
   --r-background-color: var(--surface);
   --r-main-font: "Atkinson Hyperlegible", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
@@ -24,12 +25,18 @@
   --content-max: 22em;
 }
 
+html,
+body {
+  background: var(--surface);
+}
+
 .reveal {
   font-weight: 400;
   color: var(--ink);
   letter-spacing: var(--body-letter-spacing);
   word-spacing: var(--body-word-spacing);
   line-height: var(--body-line-height);
+  background: var(--surface);
 }
 
 .reveal .slides {
@@ -55,6 +62,18 @@
   background: var(--surface) !important;
 }
 
+/* Paint accent/ink immediately so hard-refresh does not flash paper under light text */
+.reveal .slides section.slide-section {
+  background: var(--accent) !important;
+  color: var(--on-accent);
+}
+
+.reveal .slides section.slide-section.section-alt,
+.reveal .slides section.slide-closing {
+  background: var(--closing) !important;
+  color: var(--on-accent);
+}
+
 .reveal h1,
 .reveal h2,
 .reveal h3 {
@@ -62,6 +81,7 @@
   letter-spacing: var(--heading-letter-spacing);
   word-spacing: 0.04em;
   font-weight: 700;
+  font-style: normal;
   color: var(--ink);
   margin: 0;
 }
@@ -100,7 +120,10 @@
   color: var(--ink);
   background: transparent;
   font-family: var(--r-main-font);
+  font-size: 0.55em;
+  font-weight: 700;
   letter-spacing: var(--body-letter-spacing);
+  padding: 0.15em 0.35em;
 }
 
 .reveal a:focus-visible,
@@ -114,35 +137,14 @@
   .reveal .slides section,
   .reveal .backgrounds .slide-background,
   .reveal .progress span,
-  .reveal .controls {
+  .reveal .controls,
+  .reveal .fragment {
     transition: none !important;
     animation: none !important;
   }
 }
 
 /* —— Shared chrome —— */
-
-.logo {
-  position: absolute;
-  height: 1.15em;
-  width: auto;
-  z-index: 3;
-}
-
-.logo-tl {
-  top: 0.55em;
-  left: 0.7em;
-}
-
-.logo-bl {
-  bottom: 0.55em;
-  left: 0.7em;
-}
-
-.logo-header {
-  top: 0.35em;
-  left: 0.7em;
-}
 
 .content-pad {
   position: relative;
@@ -174,6 +176,7 @@
   margin: 0 0 0.5em;
   font-size: 0.85em;
   font-weight: 700;
+  font-style: normal;
   letter-spacing: 0.03em;
   text-transform: none;
   color: var(--accent);
@@ -183,6 +186,7 @@
   margin: 0;
   font-size: 1em;
   font-weight: 400;
+  font-style: normal;
   color: var(--muted);
   line-height: 1.5;
 }
@@ -254,6 +258,7 @@
 
 .mode-col .mode-head {
   font-weight: 700;
+  font-style: normal;
   font-size: 1.1em;
   letter-spacing: var(--heading-letter-spacing);
   padding: 0.45em 0.6em;
@@ -270,6 +275,7 @@
   margin: 0.7em 0 0.25em;
   font-size: 0.9em;
   font-weight: 700;
+  font-style: normal;
   text-transform: none;
   letter-spacing: 0.02em;
   color: var(--muted);
@@ -287,20 +293,12 @@
 
 /* —— Section breaks —— */
 
-.slide-section {
-  background: var(--accent) !important;
-}
-
 .slide-section h2 {
   color: var(--on-accent);
   font-size: 2em;
   max-width: 14em;
   margin: 3.2em 0 0 1.6em;
   line-height: 1.25;
-}
-
-.slide-section.section-alt {
-  background: var(--ink) !important;
 }
 
 /* —— Split (text + side media) —— */
@@ -331,33 +329,78 @@
   align-self: center;
 }
 
-/* —— Code —— */
+/* —— Code (light theme on paper) —— */
 
 .slide-code pre {
   width: 100%;
   max-width: 36em;
   margin: 0.7em 0 0;
   box-shadow: none;
-  font-size: 0.62em;
+  font-size: 0.72em;
   letter-spacing: 0;
   word-spacing: 0;
 }
 
 .slide-code pre code {
-  padding: 1em 1.1em;
-  max-height: 13em;
-  line-height: 1.5;
+  padding: 1em 1.15em;
+  max-height: 12em;
+  line-height: 1.55;
 }
 
 .reveal .hljs {
-  background: #1e2430;
+  background: var(--code-surface);
+  color: var(--ink);
+}
+
+.reveal .hljs-comment,
+.reveal .hljs-quote {
+  color: var(--muted);
+  font-style: normal;
+}
+
+.reveal .hljs-keyword,
+.reveal .hljs-selector-tag,
+.reveal .hljs-addition {
+  color: #084c3a;
+  font-weight: 700;
+}
+
+.reveal .hljs-string,
+.reveal .hljs-meta .hljs-string,
+.reveal .hljs-attr {
+  color: #0c6b52;
+}
+
+.reveal .hljs-number,
+.reveal .hljs-literal,
+.reveal .hljs-variable,
+.reveal .hljs-template-variable {
+  color: #1a4a7a;
+}
+
+.reveal .hljs-title,
+.reveal .hljs-section,
+.reveal .hljs-attribute,
+.reveal .hljs-name {
+  color: #121820;
+  font-weight: 700;
+}
+
+.reveal .hljs-built_in,
+.reveal .hljs-type,
+.reveal .hljs-params {
+  color: #2c3544;
+}
+
+.reveal .hljs-deletion {
+  color: #7a2e2e;
+}
+
+.reveal .hljs .hljs-ln-numbers {
+  color: var(--muted);
 }
 
 /* —— Closing —— */
-
-.slide-closing {
-  background: var(--closing) !important;
-}
 
 .slide-closing .closing-stack {
   position: relative;
@@ -379,6 +422,7 @@
   margin: 0;
   font-size: 1em;
   font-weight: 400;
+  font-style: normal;
   color: var(--accent-soft);
   line-height: 1.5;
 }
