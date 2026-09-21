@@ -54,12 +54,12 @@ Speaker notes in `<aside class="notes">` are author-controlled HTML rendered by 
 | Class | Use |
 | --- | --- |
 | `slide-title` | Opening title + speakers |
-| `slide-section` / `section-alt` | Section breaks |
+| `slide-section` / `section-alt` | Full-bleed section breaks |
 | `slide-list` | Bullets (optional `fragment`) |
-| `slide-modes` | Three-column comparison |
-| `slide-gallery` | 3×2 image grid |
+| `slide-modes` | Two-column comparison |
+| `slide-gallery` | 2×2 image grid |
 | `slide-diagram` | Full-bleed diagram |
-| `two-tone` + `split-body` | Header chrome + optional side diagram |
+| `slide-split` | Text + side diagram |
 | `slide-code` | Syntax-highlighted code (`Highlight` plugin) |
 | `slide-closing` | Thanks / contact |
 
@@ -75,19 +75,17 @@ Brand tokens live at the top of `src/style.css`:
 
 ```css
 :root {
-  --ink: #1a2332;
-  --muted: #4a5563;
-  --surface: #eef1f4;
-  --surface-muted: #dde3ea;
-  --surface-raised: #f7f8fa;
+  --ink: #121820;
+  --muted: #3d4654;
+  --surface: #f2eee6;
   --accent: #0c6b52;
-  --accent-soft: #cfe8df;
-  --on-accent: #f7f8fa;
-  --closing: #1a2332;
+  --accent-soft: #c5e4d8;
+  --on-accent: #f2eee6;
+  --closing: #121820;
 }
 ```
 
-The default stack uses [Atkinson Hyperlegible](https://brailleinstitute.org/freefont) with slightly open letter/word spacing, sentence-case labels (no small-caps uppercase chrome), softer slide backgrounds than pure white, and roomier list line-height. Swap fonts by changing the `@fontsource/atkinson-hyperlegible` imports in `src/main.js` and the `--r-*-font` / spacing variables.
+Content slides share one solid paper colour (`--surface`). Section and closing slides use solid accent or ink. The default stack uses [Atkinson Hyperlegible](https://brailleinstitute.org/freefont) with open letter/word spacing, sentence-case labels, and calmer 1–2 column layouts (no header bars or two-tone chrome). Swap fonts via `@fontsource/atkinson-hyperlegible` in `src/main.js` and the `--r-*-font` / spacing variables.
 
 ## CI and publish
 
@@ -100,4 +98,4 @@ Dependabot watches npm and GitHub Actions weekly.
 
 ## Scaffold
 
-Vite + reveal.js 6 with Atkinson Hyperlegible, Highlight + Notes plugins, readability-first slide layouts, and project Pages base path derived from the repo / package name.
+Vite + reveal.js 6 with Atkinson Hyperlegible, a solid paper surface + teal accent palette, Highlight + Notes plugins, calm 1–2 column layouts, and project Pages base path derived from the repo / package name.
