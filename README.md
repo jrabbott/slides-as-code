@@ -1,6 +1,6 @@
 # Slides as code
 
-Reusable Vite + [reveal.js](https://revealjs.com/) starter for talk decks. Branding is intentionally neutral—set CSS variables and add assets per talk.
+Reusable Vite + [reveal.js](https://revealjs.com/) starter for talk decks. The default theme is tuned for readability (Atkinson Hyperlegible, solid paper surface, quiet motion)—set CSS variables and add assets per talk.
 
 **Live deck (after Pages is enabled):** [https://jrabbott.github.io/slides-as-code/](https://jrabbott.github.io/slides-as-code/)
 
@@ -46,7 +46,7 @@ Speaker notes in `<aside class="notes">` are author-controlled HTML rendered by 
 2. Rename the package in `package.json` to match the new repo name (local `vite` base falls back to that name).
 3. CI/CD sets `BASE_PATH` from the GitHub repository name automatically—no `vite.config.js` edit required for project Pages.
 4. Replace title, meta description, speakers, and sample slides in `index.html`.
-5. Customize brand tokens in `src/style.css` (`--ink`, `--accent`, etc.) and swap `public/assets/logo-placeholder.svg` (`.logo` / `.logo-tl` slots are ready).
+5. Customize brand tokens in `src/style.css` (`--ink`, `--accent`, spacing vars, etc.).
 6. In the new repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
 ### Layout classes in the sample deck
@@ -54,12 +54,12 @@ Speaker notes in `<aside class="notes">` are author-controlled HTML rendered by 
 | Class | Use |
 | --- | --- |
 | `slide-title` | Opening title + speakers |
-| `slide-section` / `section-alt` | Section breaks |
+| `slide-section` / `section-alt` | Full-bleed section breaks |
 | `slide-list` | Bullets (optional `fragment`) |
-| `slide-modes` | Three-column comparison |
-| `slide-gallery` | 3×2 image grid |
+| `slide-modes` | Two-column comparison |
+| `slide-gallery` | 2×2 image grid |
 | `slide-diagram` | Full-bleed diagram |
-| `two-tone` + `split-body` | Header chrome + optional side diagram |
+| `slide-split` | Text + side diagram |
 | `slide-code` | Syntax-highlighted code (`Highlight` plugin) |
 | `slide-closing` | Thanks / contact |
 
@@ -75,18 +75,25 @@ Brand tokens live at the top of `src/style.css`:
 
 ```css
 :root {
-  --ink: #1c2434;
-  --muted: #5a6573;
-  --surface: #ffffff;
-  --surface-muted: #e8ecf0;
-  --accent: #0f6e56;
-  --accent-soft: #d8efe7;
-  --on-accent: #ffffff;
-  --closing: #1c2434;
+  --ink: #121820;
+  --muted: #2c3544;
+  --surface: #f2eee6;
+  --accent: #0c6b52;
+  --accent-soft: #c5e4d8;
+  --on-accent: #f2eee6;
+  --closing: #121820;
 }
 ```
 
-Swap fonts by changing the `@fontsource/dm-sans` imports in `src/main.js` and the `--r-*-font` variables.
+Content slides share one solid paper colour (`--surface`). Section and closing slides use solid accent or ink. Defaults lean dyslexia-friendly:
+
+- [Atkinson Hyperlegible](https://brailleinstitute.org/freefont) with open letter/word spacing
+- Sentence-case labels; prefer **bold** over italic for emphasis
+- Quiet motion (`transition: 'none'`; plain `fragment` without travel)
+- Light syntax colours on paper (no dark Monokai block)
+- Calmer 1–2 column layouts
+
+Swap fonts via `@fontsource/atkinson-hyperlegible` in `src/main.js` and the `--r-*-font` / spacing variables.
 
 ## CI and publish
 
@@ -99,4 +106,4 @@ Dependabot watches npm and GitHub Actions weekly.
 
 ## Scaffold
 
-Vite + reveal.js 6 with DM Sans, Highlight + Notes plugins, brand-neutral slide layouts, and project Pages base path derived from the repo / package name.
+Vite + reveal.js 6 with Atkinson Hyperlegible, a solid paper surface + teal accent palette, quiet transitions, Highlight + Notes plugins, calm 1–2 column layouts, and project Pages base path derived from the repo / package name.

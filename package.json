@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Reusable Vite + reveal.js starter template for talk slides",
+  "description": "Reusable Vite + reveal.js starter with a readability-first (Atkinson Hyperlegible) slide theme",
   "engines": {
     "node": ">=22"
   },
@@ -14,7 +14,7 @@
     "audit": "npm audit --audit-level=high"
   },
   "dependencies": {
-    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/atkinson-hyperlegible": "^5.3.0",
     "reveal.js": "^6.0.2"
   },
   "devDependencies": {
