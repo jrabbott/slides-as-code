@@ -1,0 +1,27 @@
+import Reveal from 'reveal.js';
+import Notes from 'reveal.js/plugin/notes/notes.esm.js';
+
+import 'reveal.js/dist/reveal.css';
+import 'reveal.js/dist/theme/white.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/400-italic.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/700.css';
+import './style.css';
+
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)',
+).matches;
+
+Reveal.initialize({
+  hash: true,
+  slideNumber: true,
+  showNotes: false,
+  transition: prefersReducedMotion ? 'none' : 'fade',
+  width: 1920,
+  height: 1080,
+  margin: 0,
+  minScale: 0.2,
+  maxScale: 2.0,
+  plugins: [Notes],
+});

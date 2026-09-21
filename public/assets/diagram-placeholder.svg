@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Placeholder diagram">
+  <rect width="960" height="540" fill="#e8ecf0"/>
+  <rect x="48" y="48" width="280" height="160" rx="12" fill="#ffffff" stroke="#1c2434" stroke-width="3"/>
+  <rect x="340" y="48" width="280" height="160" rx="12" fill="#ffffff" stroke="#1c2434" stroke-width="3"/>
+  <rect x="632" y="48" width="280" height="160" rx="12" fill="#ffffff" stroke="#1c2434" stroke-width="3"/>
+  <rect x="188" y="300" width="584" height="160" rx="12" fill="#0f6e56"/>
+  <path d="M188 128 H340" stroke="#5a6573" stroke-width="4"/>
+  <path d="M620 128 H632" stroke="#5a6573" stroke-width="4"/>
+  <path d="M480 208 V300" stroke="#5a6573" stroke-width="4"/>
+  <text x="188" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#1c2434">Source</text>
+  <text x="480" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#1c2434">Process</text>
+  <text x="772" y="140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#1c2434">Store</text>
+  <text x="480" y="392" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="#ffffff">Output</text>
+</svg>
