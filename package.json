@@ -18,6 +18,6 @@
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {
-    "vite": "^6.2.0"
+    "vite": "^8.3.0"
   }
 }
