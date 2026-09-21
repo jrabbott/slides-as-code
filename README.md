@@ -1,6 +1,6 @@
 # Slides as code
 
-Reusable Vite + [reveal.js](https://revealjs.com/) starter for talk decks. Branding is intentionally neutral—set CSS variables and add assets per talk.
+Reusable Vite + [reveal.js](https://revealjs.com/) starter for talk decks. The default theme is tuned for readability (Atkinson Hyperlegible, soft surfaces, generous spacing)—set CSS variables and add assets per talk.
 
 **Live deck (after Pages is enabled):** [https://jrabbott.github.io/slides-as-code/](https://jrabbott.github.io/slides-as-code/)
 
@@ -46,7 +46,7 @@ Speaker notes in `<aside class="notes">` are author-controlled HTML rendered by 
 2. Rename the package in `package.json` to match the new repo name (local `vite` base falls back to that name).
 3. CI/CD sets `BASE_PATH` from the GitHub repository name automatically—no `vite.config.js` edit required for project Pages.
 4. Replace title, meta description, speakers, and sample slides in `index.html`.
-5. Customize brand tokens in `src/style.css` (`--ink`, `--accent`, etc.) and swap `public/assets/logo-placeholder.svg` (`.logo` / `.logo-tl` slots are ready).
+5. Customize brand tokens in `src/style.css` (`--ink`, `--accent`, spacing vars, etc.) and swap `public/assets/logo-placeholder.svg` (`.logo` / `.logo-tl` slots are ready).
 6. In the new repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
 ### Layout classes in the sample deck
@@ -75,18 +75,19 @@ Brand tokens live at the top of `src/style.css`:
 
 ```css
 :root {
-  --ink: #1c2434;
-  --muted: #5a6573;
-  --surface: #ffffff;
-  --surface-muted: #e8ecf0;
-  --accent: #0f6e56;
-  --accent-soft: #d8efe7;
-  --on-accent: #ffffff;
-  --closing: #1c2434;
+  --ink: #1a2332;
+  --muted: #4a5563;
+  --surface: #eef1f4;
+  --surface-muted: #dde3ea;
+  --surface-raised: #f7f8fa;
+  --accent: #0c6b52;
+  --accent-soft: #cfe8df;
+  --on-accent: #f7f8fa;
+  --closing: #1a2332;
 }
 ```
 
-Swap fonts by changing the `@fontsource/dm-sans` imports in `src/main.js` and the `--r-*-font` variables.
+The default stack uses [Atkinson Hyperlegible](https://brailleinstitute.org/freefont) with slightly open letter/word spacing, sentence-case labels (no small-caps uppercase chrome), softer slide backgrounds than pure white, and roomier list line-height. Swap fonts by changing the `@fontsource/atkinson-hyperlegible` imports in `src/main.js` and the `--r-*-font` / spacing variables.
 
 ## CI and publish
 
@@ -99,4 +100,4 @@ Dependabot watches npm and GitHub Actions weekly.
 
 ## Scaffold
 
-Vite + reveal.js 6 with DM Sans, Highlight + Notes plugins, brand-neutral slide layouts, and project Pages base path derived from the repo / package name.
+Vite + reveal.js 6 with Atkinson Hyperlegible, Highlight + Notes plugins, readability-first slide layouts, and project Pages base path derived from the repo / package name.
