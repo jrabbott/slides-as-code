@@ -1,8 +1,10 @@
 import Reveal from 'reveal.js';
+import Highlight from 'reveal.js/plugin/highlight';
 import Notes from 'reveal.js/plugin/notes';
 
 import 'reveal.js/reveal.css';
 import 'reveal.js/theme/white.css';
+import 'reveal.js/plugin/highlight/monokai.css';
 import '@fontsource/dm-sans/400.css';
 import '@fontsource/dm-sans/400-italic.css';
 import '@fontsource/dm-sans/500.css';
@@ -23,5 +25,5 @@ Reveal.initialize({
   margin: 0,
   minScale: 0.2,
   maxScale: 2.0,
-  plugins: [Notes],
+  plugins: [Highlight, Notes],
 });
