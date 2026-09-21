@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.3.0",
-    "reveal.js": "^5.2.1"
+    "reveal.js": "^6.0.2"
   },
   "devDependencies": {
     "vite": "^8.3.0"
